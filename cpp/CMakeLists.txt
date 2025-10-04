@@ -1,8 +1,10 @@
 add_library(
         core.lib
         STATIC
-        lib/common/order_type.cpp
-        lib/common/side.cpp
+        lib/util/base/decimal.cpp
+        lib/ingredients/flat_map/flat_map.cpp
+        lib/common/common.cpp
+
         lib/order/order.cpp
         lib/trade/trade.cpp
         lib/orderbook/orderbook.cpp
@@ -11,6 +13,8 @@ add_library(
 target_include_directories(
         core.lib
         PUBLIC
+        lib/util/base
+        lib/ingredients/flat_map
         lib/common
         lib/order
         lib/trade

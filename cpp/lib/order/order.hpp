@@ -2,14 +2,13 @@
 
 #include <cstdint>
 
-#include "order_type.hpp"
-#include "side.hpp"
+#include "common.hpp"
 
 struct Order {
     std::uint64_t id_;
-    double price_;
-    double quantity_;
-    Side side;
-    OrderType type;
-    OrderTIF tif;
+    Price price_;
+    Size size_;
+    Side side_;
+    OrderType type_;
+    OrderTIF tif_;
 };
