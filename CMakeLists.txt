@@ -39,6 +39,19 @@ set(CMAKE_CXX_FLAGS_RELEASE "${_COMMON_COMPILER_FLAGS} -g -mavx -O3 -DNDEBUG")
 ################################### packages ##########################################
 include(FetchContent)
 
+# Catch
+FetchContent_Declare(
+        Catch2
+        GIT_SHALLOW    TRUE
+        GIT_REPOSITORY https://github.com/catchorg/Catch2.git
+        GIT_TAG        v3.9.0)
+FetchContent_MakeAvailable(Catch2)
+
+# For catch 2 only
+# list(APPEND CMAKE_MODULE_PATH ${Catch2_SOURCE_DIR}/contrib)
+# For catch 3 only
+list(APPEND CMAKE_MODULE_PATH ${Catch2_SOURCE_DIR}/extras)
+
 # Nlohmann
 set(JSON_BuildTests OFF CACHE INTERNAL "")
 

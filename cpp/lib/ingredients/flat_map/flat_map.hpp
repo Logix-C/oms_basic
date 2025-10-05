@@ -25,6 +25,14 @@ namespace oms::ingredients {
             return data_.insert(it, {key, Value{}})->second;
         }
 
+        const Value& operator[](const Key& key) const {
+            auto it = lower_bound(key);
+            if (it == data_.end()) {
+                throw std::out_of_range("Key not found in flat_map");
+            }
+            return it->second;
+        }
+
         iterator find(const Key& key) {
             auto it = lower_bound(key);
             if (it != data_.end() && !comp_(key, it->first) && !comp_(it->first, key)) {

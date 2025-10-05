@@ -7,6 +7,10 @@
 #include <trade.hpp>
 #include <flat_map.hpp>
 
+namespace test {
+    class OrderbookTestFixture;
+}
+
 namespace oms {
     struct Orderbook {
         Orderbook(){};
@@ -18,6 +22,8 @@ namespace oms {
         Trades add_order(Order order);
         void cancel_order(uint64_t order_id);
         Trades modify_order(const Order& modify_order);
+
+        friend std::ostream& operator<<(std::ostream& os, const Orderbook& orderbook);
     private:
         oms::ingredients::flat_map<common::Price, common::Size, std::less<>> bids_;
         oms::ingredients::flat_map<common::Price, common::Size, std::greater<>> asks_;
@@ -29,6 +35,7 @@ namespace oms {
 
         Trades match_orders(uint64_t order_id);
 
-        friend std::ostream& operator<<(std::ostream& os, const Orderbook& orderbook);
+        friend class test::OrderbookTestFixture;
+
     };
 }

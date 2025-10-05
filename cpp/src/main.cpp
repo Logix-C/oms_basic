@@ -1,8 +1,8 @@
 #include <iostream>
+#include <type_traits>
 
 #include <orderbook.hpp>
 #include <order.hpp>
-#include <type_traits>
 
 int main() {
     std::cout << std::is_pod<oms::Order>::value << std::endl;
