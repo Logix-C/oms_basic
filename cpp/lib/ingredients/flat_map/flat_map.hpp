@@ -88,6 +88,8 @@ namespace oms::ingredients {
         // Iterators
         iterator begin() { return data_.begin(); }
         iterator end() { return data_.end(); }
+        const_iterator begin() const { return data_.begin(); }
+        const_iterator end() const { return data_.end(); }
         reverse_iterator rbegin() { return data_.rbegin(); }
         reverse_iterator rend() { return data_.rend(); }
         const_iterator cbegin() const { return data_.begin(); }

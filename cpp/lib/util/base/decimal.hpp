@@ -73,6 +73,6 @@ namespace oms::utils {
 
     template <int Scale_, int64_t TickSize_>
     std::ostream& operator<<(std::ostream& os, const Decimal<Scale_, TickSize_>& value){
-        return os << value.toDouble();
+        return os << value.to_double();
     }
 }

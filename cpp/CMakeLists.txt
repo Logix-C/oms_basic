@@ -32,5 +32,8 @@ target_include_directories(
         core.lib
         lib/util/base
         lib/common
+        lib/ingredients/flat_map
         lib/order
+        lib/trade
+        lib/orderbook
 )

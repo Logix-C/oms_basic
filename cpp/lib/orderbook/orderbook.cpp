@@ -1,7 +1,7 @@
 #include "orderbook.hpp"
 
 namespace oms {
-    Orderbook::Orderbook(){};
+    // Orderbook::Orderbook();
 
     Orderbook::Orderbook(const Orderbook& other)
         : bids_(other.bids_), asks_(other.asks_) {};
@@ -192,5 +192,28 @@ namespace oms {
         }
 
         return trades;
+    };
+
+    std::ostream& operator<<(std::ostream& os, const Orderbook& orderbook) {
+        os << "=== Bids (Price Ascending) ===\n";
+        for (const auto& [price, size] : orderbook.bids_) {
+            os << "Price: " << price << ", Size: " << size << '\n';
+        }
+
+        os << "\n=== Asks (Price Descending) ===\n";
+        for (const auto& [price, size] : orderbook.asks_) {
+            os << "Price: " << price << ", Size: " << size << '\n';
+        }
+
+        os << "\n=== Personal Orders ===\n";
+        for (const auto& [id, order] : orderbook.personal_orders_) {
+            os << "Order ID: " << id
+               << ", Price: " << order.price_
+               << ", Size: " << order.size_
+               << ", Side: " << (order.side_ == common::Side::BID ? "Buy" : "Sell")
+               << '\n';
+        }
+
+        return os;
     };
 };
