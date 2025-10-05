@@ -55,8 +55,6 @@ TEST_CASE_METHOD(test::OrderbookTestFixture, "Cancel Order", "[Orderbook]") {
 
     REQUIRE_FALSE(personal_orders(orderbook).contains(order_id));
     REQUIRE(bids(orderbook)[price].is_zero());
-
-    // REQUIRE(bids(orderbook)[price].is_zero());
 }
 
 TEST_CASE_METHOD(test::OrderbookTestFixture, "Modify Order", "[Orderbook]") {

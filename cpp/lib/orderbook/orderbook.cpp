@@ -148,8 +148,13 @@ namespace oms {
 
     Trades Orderbook::match_orders(uint64_t order_id) {
         Trades trades;
+        trades.reserve(personal_orders_.size());
 
-        while (bids_.empty() || asks_.empty()) {
+        while (true) {
+            if (bids_.empty() || asks_.empty()) {
+                break;
+            }
+
             auto& [bid_price, bid_size] = *bids_.begin();
             auto& [ask_price, ask_size] = *asks_.begin();
 
