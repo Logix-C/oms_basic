@@ -8,7 +8,7 @@
 namespace oms::ingredients {
     template <typename Key, typename Value, typename Compare = std::less<Key>>
     struct flat_map {
-        using value_type = std::pair<const Key, Value>;
+        using value_type = std::pair<Key, Value>;
         using container_type = std::vector<value_type>;
         using iterator = container_type::iterator;
         using const_iterator = container_type::const_iterator;

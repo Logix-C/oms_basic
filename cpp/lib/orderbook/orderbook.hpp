@@ -16,11 +16,16 @@ namespace oms {
 
         Trades add_order(Order order);
         void cancel_order(uint64_t order_id);
-        Trades modify_order(Order modify_order);
+        Trades modify_order(const Order& modify_order);
     private:
         oms::ingredients::flat_map<common::Price, common::Size, std::less<>> bids_;
         oms::ingredients::flat_map<common::Price, common::Size, std::greater<>> asks_;
-
         std::unordered_map<uint64_t, Order> personal_orders_;
+
+        bool can_match(common::Side side, common::Price price);
+
+        bool can_fully_fill(common::Side side, common::Price price, common::Size size);
+
+        Trades match_orders(uint64_t order_id);
     };
 }

@@ -30,4 +30,7 @@ target_include_directories(
         oms.bin
         PRIVATE
         core.lib
+        lib/util/base
+        lib/common
+        lib/order
 )

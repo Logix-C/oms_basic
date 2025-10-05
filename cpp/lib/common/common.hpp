@@ -22,7 +22,6 @@ namespace oms::common {
         ASK = 1
     };
 
-
     inline std::ostream& operator<<(std::ostream& os, OrderType type) {
         switch (type) {
         case OrderType::LIMIT:  return os << "LIMIT";
