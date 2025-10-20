@@ -1,11 +1,13 @@
 #pragma once
 
+#include <ctime>
 #include <unordered_map>
 #include <ostream>
 
 #include <order.hpp>
 #include <trade.hpp>
 #include <flat_map.hpp>
+#include <spin_lock.hpp>
 
 namespace test {
     class OrderbookTestFixture;
@@ -28,6 +30,7 @@ namespace oms {
         oms::ingredients::flat_map<common::Price, common::Size, std::less<>> bids_;
         oms::ingredients::flat_map<common::Price, common::Size, std::greater<>> asks_;
         std::unordered_map<uint64_t, Order> personal_orders_;
+        SpinLock spin_lock_;
 
         bool can_match(common::Side side, common::Price price);
 
@@ -35,7 +38,8 @@ namespace oms {
 
         Trades match_orders(uint64_t order_id);
 
-        friend class test::OrderbookTestFixture;
+        void prune_day_orders();
 
+        friend class test::OrderbookTestFixture;
     };
 }

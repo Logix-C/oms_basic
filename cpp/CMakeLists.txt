@@ -2,6 +2,7 @@ add_library(
         core_lib
         STATIC
         lib/util/base/decimal.cpp
+        lib/util/spin_lock/spin_lock.cpp
         lib/ingredients/flat_map/flat_map.cpp
         lib/common/common.cpp
 
@@ -14,6 +15,7 @@ target_include_directories(
         core_lib
         PUBLIC
         lib/util/base
+        lib/util/spin_lock
         lib/ingredients/flat_map
         lib/common
         lib/order
